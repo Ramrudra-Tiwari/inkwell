@@ -1,0 +1,67 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: messaging-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/inkwell_messaging?createDatabaseIfNotExist=true
+    username: root
+    password: rootroot
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: inkwell
+    password: inkwell123
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${SMTP_USERNAME:ramrudhra11@gmail.com}
+    password: ${SMTP_PASSWORD:flop ldmg hlpu tvlm}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            trust: smtp.gmail.com
+          connectiontimeout: 10000
+          timeout: 10000
+          writetimeout: 10000
+        debug: true # Enable debug logging for JavaMail
+
+eureka:
+  client:
+    should-unregister-on-shutdown: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when-authorized
+
+logging:
+  level:
+    com.inkwell.messaging: DEBUG
+    org.springframework.amqp: DEBUG

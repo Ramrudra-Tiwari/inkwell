@@ -1,0 +1,10 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: payment-service
+
+razorpay:
+  key-id: ${RAZORPAY_KEY_ID:rzp_test_Sm2lSPJIAxdISy}
+  key-secret: ${RAZORPAY_KEY_SECRET:blHrm40Sj3s3y4ShJO2lfJ4q}

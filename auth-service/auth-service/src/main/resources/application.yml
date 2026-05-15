@@ -1,0 +1,56 @@
+server:
+  port: 8081
+  forward-headers-strategy: native
+
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/inkwell_auth?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: rootroot
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  # ── OAuth2 (Spring auto-configures ClientRegistrationRepository from here) ──
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID:}
+            client-secret: ${GOOGLE_CLIENT_SECRET:}
+            scope:
+              - openid
+              - profile
+              - email
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+app:
+  frontend-url: http://localhost:5173
+  messaging-service-url: http://localhost:8087
+  post-service-url: http://localhost:8082
+
+logging:
+  level:
+    com.inkwell.auth: DEBUG
+    org.springframework.security: DEBUG

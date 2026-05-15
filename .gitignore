@@ -1,0 +1,10 @@
+.env
+*.log
+hs_err_pid*.log
+
+**/target/
+**/node_modules/
+**/dist/
+
+uploads/
+logs/

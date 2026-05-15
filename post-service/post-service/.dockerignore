@@ -1,0 +1,9 @@
+target
+.mvn
+*.log
+sonar-project.properties
+DOCUMENTATION_INDEX.md
+FILE_INVENTORY.md
+FINAL_DELIVERY_REPORT.md
+IMPLEMENTATION_SUMMARY.md
+QUICK_REFERENCE.md

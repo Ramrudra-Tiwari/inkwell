@@ -1,0 +1,5 @@
+target
+.mvn
+uploads
+logs
+*.log
